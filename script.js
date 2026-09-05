@@ -1,11 +1,15 @@
-const knop = document.getElementById('modus-knop');
+const cdAudio = document.getElementById('cd-audio');
+const cdKnop = document.getElementById('cd-knop');
+const cdSchijf = document.getElementById('cd-schijf');
 
-knop.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-
-    if (document.body.classList.contains('dark-mode')) {
-        knop.textContent = 'Lichte modus';
+cdKnop.addEventListener('click', () => {
+    if (cdAudio.paused) {
+        cdAudio.play();
+        cdSchijf.classList.add('actief');
+        cdKnop.innerHTML = '<i class="fa-solid fa-pause"></i>';
     } else {
-        knop.textContent = 'Donkere modus';
+        cdAudio.pause();
+        cdSchijf.classList.remove('actief');
+        cdKnop.innerHTML = '<i class="fa-solid fa-play"></i>';
     }
 });
